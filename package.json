@@ -4,6 +4,8 @@
   "description": "a resource for individuals with visual impairments to be able to interact with photos in a useful and meaningful way",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "jest --watch-all"
   },
   "author": "Moses A. Samuel",
