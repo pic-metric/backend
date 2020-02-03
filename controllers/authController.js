@@ -33,12 +33,12 @@ class AuthController {
     } 
 
     static async login(req, res, next) {
-        const [err, user] = catchErrors( await Users.findByEmail(req.body.email) )
+        const [err, user] = await catchErrors( Users.findByEmail(req.body.email) )
 
         if (err) {
             next(err)
         } else {
-            bcrypt.compare(req.body.password, user.password, (err, passwordsMatch) => {
+            bcrypt.compare(req.body.password, user.hashed_password, (err, passwordsMatch) => {
                 if (err) {
                     next (err)
                 }
