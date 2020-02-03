@@ -19,9 +19,10 @@ class AuthController {
                         full_name: addreq.body.full_name,
                         hashed_password: encryptedPw,
                     })
+                    
                     res.status(200).json({
-                        success: `Welcome, ${newUser.full_name}!`,
-                        ...newUser
+                        ...newUser,
+                        token: generateToken(newUser)
                     })
 
                 } catch(err) {
