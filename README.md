@@ -38,13 +38,11 @@
 	}
 
 	exampleResponseBody: {
-		
     		"id": 1,
     		"created_at": "2020-02-03T22:55:23.551Z",
     		"updated_at": "2020-02-03T22:55:23.551Z",
     		"email": "johnnytest@example.com",
     		"full_name": "johnny test",
-    		"hashed_password": "$2b$08$cGKyuJT1ySpwbK8lSstzAOGqJcUO6ttAUummZuTv239db1EPEFy/q",
     		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5ueXRlc3RAZXhhbXBsZS5jb20iLCJpYXQiOjE1ODA3NzA1MjMsImV4cCI6MTU4MDg1NjkyM30.HHEbc84omFrx5mc_66dYeJL7RAEwgMc10cp-DC6WMGU"
 
 	}
@@ -59,8 +57,12 @@
 	}
 
 	exampleResponseBody: {
-		user_id: 2
-		token: "fadsljfsdsd.sfajsd.fdsal"
+		"id": 1,
+		"created_at": "2020-02-03T22:55:23.551Z",
+		"updated_at": "2020-02-03T22:55:23.551Z",
+		"email": "johnnytest@example.com",
+		"full_name": "johnny test",
+		"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5ueXRlc3RAZXhhbXBsZS5jb20iLCJpYXQiOjE1ODA3NzA1MjMsImV4cCI6MTU4MDg1NjkyM30.HHEbc84omFrx5mc_66dYeJL7RAEwgMc10cp-DC6WMGU"
 	}
 
 ### Pics
