@@ -16,10 +16,10 @@ class AuthController {
                     // Insert the user with the newly hashed password into the system.
                     const newUser = await Users.create({
                         email: req.body.email,
-                        full_name: addreq.body.full_name,
+                        full_name: req.body.full_name,
                         hashed_password: encryptedPw,
                     })
-                    
+
                     res.status(200).json({
                         ...newUser,
                         token: generateToken(newUser)
@@ -33,12 +33,12 @@ class AuthController {
     } 
 
     static async login(req, res, next) {
-        const [err, user] = catchErrors( await Users.findByEmail(req.body.email) )
+        const [err, user] = await catchErrors( Users.findByEmail(req.body.email) )
 
         if (err) {
             next(err)
         } else {
-            bcrypt.compare(req.body.password, user.password, (err, passwordsMatch) => {
+            bcrypt.compare(req.body.password, user.hashed_password, (err, passwordsMatch) => {
                 if (err) {
                     next (err)
                 }
