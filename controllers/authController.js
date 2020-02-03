@@ -30,6 +30,29 @@ class AuthController {
             }
         })
     } 
+
+    static async login(req, res, next) {
+        const [err, user] = catchErrors( await Users.findByEmail(req.body.email) )
+
+        if (err) {
+            next(err)
+        } else {
+            bcrypt.compare(req.body.password, user.password, (err, passwordsMatch) => {
+                if (err) {
+                    next (err)
+                }
+                else if (!passwordsMatch) {
+                    next(new Error('Invalid password'))
+                } else {
+                    res.status(200).json({
+                        ...user,
+                        token: generateToken(user)
+                    })
+                }
+            })
+        }
+
+    }
 }
 
 // Helper
