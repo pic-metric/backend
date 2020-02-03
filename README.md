@@ -44,6 +44,8 @@
 
 *POST* - /api/auth/login
 
+*Log a user into the system. Generates a token.*
+
 	exampleRequestBody: {
 		email: String
 		password: String
