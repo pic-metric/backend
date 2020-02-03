@@ -2,13 +2,15 @@
 
 ## API Documentation
 
+**Base url: https://bw-pic-metric.herokuapp.com/api**
+
 ### Users
 
-*GET* - /api/users 
+*GET* - /users 
 
 *Retrieve all users in the system*
 
-*PUT* - /api/users/:user_id
+*PUT* - /users/:user_id
 
 *Update a user's infromation*
 
@@ -19,14 +21,14 @@
 		last_name: String (nullable)
 	}
 
-*DELETE* - /api/users/:user_id
+*DELETE* - /users/:user_id
 
 *Delete a user from the system*
 <hr>
 
 ### Auth 
 
-*POST* - /api/auth/register
+*POST* - /auth/register
 
 *Register a user. Generates a token.*
 
@@ -42,7 +44,7 @@
 		token: "fadsljfsdsd.sfajsd.fdsal"
 	}
 
-*POST* - /api/auth/login
+*POST* - /auth/login
 
 *Log a user into the system. Generates a token.*
 
@@ -58,15 +60,15 @@
 
 ### Pics
 
-*GET* - /api/pics
+*GET* - /pics
 
 *Retrieve all pictures in the system*
 
-*GET* - /api/pics/:user_id
+*GET* - /pics/:user_id
 
 *Retrieve all pictures stored by a particular user*
 
-*POST* - /api/pics
+*POST* - /pics
 
 *Upload a picture*
 
@@ -75,7 +77,7 @@
 		url: String
 	}
 
-*DELETE* - /api/pics/:pic_id
+*DELETE* - /pics/:pic_id
 
 *Delete a picture*
 <hr>
@@ -83,7 +85,7 @@
 
 ### Attributes
 
-*GET* - /api/attributes/:pic_id
+*GET* - /attributes/:pic_id
 
 *Get attributes for a particular picture*
 
@@ -91,7 +93,7 @@
 		attributes: ['dog', 'tree', 'pee']
 	}
 
-*POST* - /api/attributes/:pic_id
+*POST* - /attributes/:pic_id
 
 *Store an attribute for a particular picture*
 
@@ -99,7 +101,7 @@
 		attributes: Array String	
 	}
 
-*DELETE* - /api/attributes/:pic_id/:attribute_name
+*DELETE* - /attributes/:pic_id/:attribute_name
 
 *Delete an attribute for a particular picture*
 
