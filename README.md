@@ -109,6 +109,8 @@
 
 ### Priority endpoints
 
+Auth endpoints
+
 <hr>
 
 ### Available Endpoints
