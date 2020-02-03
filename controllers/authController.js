@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 
 const { JWT_SECRET } = require('../config/secrets')
 const Users = require('../models/usersModel')
-const { catchErrors } = require('../helpers')
+const { catchErrors, without } = require('../helpers')
 
 class AuthController {
     static async register(req, res, next) {
@@ -28,9 +28,9 @@ class AuthController {
                             full_name: req.body.full_name,
                             hashed_password: encryptedPw,
                         })
-
+                        
                         res.status(200).json({
-                            ...newUser,
+                            ...without('hashed_password', newUser),
                             token: generateToken(newUser)
                         })
 
@@ -56,7 +56,7 @@ class AuthController {
                     next(new Error('Invalid password'))
                 } else {
                     res.status(200).json({
-                        ...user,
+                        ...without('hashed_password', user),
                         token: generateToken(user)
                     })
                 }
