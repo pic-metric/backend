@@ -1,5 +1,5 @@
 // Promise any -> Array Promise
-function withCatch(promise) {
+function catchErrors(promise) {
     return promise
         .then(data => [null, data])
         .catch(err => [err])
@@ -16,7 +16,7 @@ function responseForUnfinishedEndpoint(req, res) {
 }
 
 module.exports = {
-    withCatch,
+    catchErrors,
     validateFields,
     responseForUnfinishedEndpoint
 }

@@ -13,16 +13,16 @@ const { responseForUnfinishedEndpoint } = require('../helpers')
 
 // GET /api/users 
 // Retrieve all users in the system.
-router.get('/users', responseForUnfinishedEndpoint)
+router.get('/', responseForUnfinishedEndpoint)
 
 
 // PUT /api/users/:user_id
 // Update a user's information.
-router.put('/users/:user_id', responseForUnfinishedEndpoint)
+router.put('/:user_id', responseForUnfinishedEndpoint)
 
 // DELETE /api/users/:user_id
 // Delete a user from the system.
-router.delete('/api/users/:user_id', responseForUnfinishedEndpoint)
+router.delete('/:user_id', responseForUnfinishedEndpoint)
 
 module.exports = router
 
