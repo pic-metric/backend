@@ -2,6 +2,8 @@
 
 ## API Documentation
 
+**Base url: https://bw-pic-metric.herokuapp.com/**
+
 ### Users
 
 *GET* - /api/users 
