@@ -17,8 +17,7 @@
 	exampleRequestBody {
 		email: String
 		password: String
-		first_name: String (nullable)
-		last_name: String (nullable)
+		full_name: String (nullable)
 	}
 
 *DELETE* - /users/:user_id
@@ -35,8 +34,7 @@
 	exampleRequestBody: {
 		email: String
 		password: String
-		first_name: String (nullable)
-		last_name: String (nullable)
+		full_name: String (nullable)
 	}
 
 	exampleResponseBody: {
