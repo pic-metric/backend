@@ -6,7 +6,7 @@ const Users = require('../models/usersModel')
 const { catchErrors } = require('../helpers')
 
 class AuthController {
-   static async register(req, res, next) {
+    static async register(req, res, next) {
        // asyncronously hash the password before storing it in the database.
         bcrypt.hash(req.body.password, 8, async (err, encryptedPw) => {
             if (err) {
@@ -27,7 +27,11 @@ class AuthController {
                 }
             }
         })
-   }
+    }
+
+    static async login(req, res, next) {
+        
+    } 
 }
 
 // Helper
