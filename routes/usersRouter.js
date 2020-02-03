@@ -3,7 +3,6 @@
  */
 
 const router = require('express').Router({mergeParams: true})
-const usersModel = require('../models/usersModel')
 const { responseForUnfinishedEndpoint } = require('../helpers')
 
 
@@ -24,6 +23,8 @@ router.put('/users/:user_id', responseForUnfinishedEndpoint)
 // DELETE /api/users/:user_id
 // Delete a user from the system.
 router.delete('/api/users/:user_id', responseForUnfinishedEndpoint)
+
+module.exports = router
 
 
 
