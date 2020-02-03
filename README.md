@@ -5,6 +5,7 @@
 ### Users
 
 *GET* - /api/users 
+
 *Retrieve all users in the system*
 
 *PUT* - /api/users/:user_id
@@ -82,11 +83,11 @@
 
 *GET* - /api/attributes/:pic_id
 
+*Get attributes for a particular picture*
+
 	exampleResponseBody: {
 		attributes: ['dog', 'tree', 'pee']
 	}
-
-*Get attributes for a particular picture*
 
 *POST* - /api/attributes/:pic_id
 
