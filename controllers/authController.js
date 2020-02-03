@@ -18,19 +18,17 @@ class AuthController {
                         email: req.body.email,
                         full_name: addreq.body.full_name,
                         hashed_password: encryptedPw,
-                        token: generateToken()
                     })
-                    res.status(200).json(newUser)
+                    res.status(200).json({
+                        success: `Welcome, ${newUser.full_name}!`,
+                        ...newUser
+                    })
 
                 } catch(err) {
                     next(new Error('there was an issue inserting the user into the database.'))
                 }
             }
         })
-    }
-
-    static async login(req, res, next) {
-        
     } 
 }
 
