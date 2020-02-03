@@ -16,17 +16,30 @@ class AuthController {
                     // Insert the user with the newly hashed password into the system.
                     const newUser = await Users.create({
                         email: req.body.email,
-                        full_name: req.body.full_name,
-                        hashed_password: encryptedPw
+                        full_name: addreq.body.full_name,
+                        hashed_password: encryptedPw,
+                        token: generateToken()
                     })
                     res.status(200).json(newUser)
-                    
+
                 } catch(err) {
                     next(new Error('there was an issue inserting the user into the database.'))
                 }
             }
         })
    }
+}
+
+// Helper
+function generateToken(user) {
+    const payload = {
+        email: user.email,
+        subject: user.user_id
+    }
+
+    const options = { expiresIn: '1d' }
+
+    return jwt.sign(payload, JWT_SECRET, options)
 }
 
 module.exports = AuthController
