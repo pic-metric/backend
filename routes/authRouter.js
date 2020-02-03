@@ -3,10 +3,12 @@
  */
 
 const router = require('express').Router({mergeParams: true})
-const { responseForUnfinishedEndpoint } = require('../helpers')
+const AuthController = require('../controllers/authController')
 
-router.post('/register', responseForUnfinishedEndpoint)
+// POST https://bw-pic-metric.herokuapp.com/api/register
+router.post('/register', AuthController.register)
 
-router.post('/login', responseForUnfinishedEndpoint)
+// POST https://bw-pic-metric.herokuapp.com/api/login
+router.post('/login', AuthController.login)
 
 module.exports = router
