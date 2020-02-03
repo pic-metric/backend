@@ -5,6 +5,10 @@ const express = require('express')
 const helmet = require('helmet')
 const cors = require('cors')
 
+const usersRouter = require('./routes/usersRouter')
+const authRouter = require('./routes/authRouter')
+const picsRouter = require('./routes/picsRouter')
+const attributesRouter = require('./routes/attributesRouter')
 
 /**
  * Constants
@@ -23,6 +27,11 @@ server.use(cors())
 /**
  * Routes (Main)
  */
+
+server.use('/api/users', usersRouter)
+server.use('/api/auth', authRouter)
+server.use('/api/pics', picsRouter)
+server.use('/api/attributes', attributesRouter)
  
 // Index Route (Ping)
 server.get('/', function ping (req, res) {
