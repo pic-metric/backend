@@ -14,7 +14,7 @@ class PicsController {
         }
     }
 
-    static async getAllForUser(req, res, next) {
+    static async getAllPicsForUser(req, res, next) {
         let [err, pics] = await catchErrors( Pics.allForUser(req.params.user_id) )
 
         if (err) {
