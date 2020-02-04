@@ -9,14 +9,15 @@ class AuthController {
     static async register(req, res, next) {
         // Check to see if the user exists already
 
-        const [err, existingUser] = await catchErrors( Users.findByEmail(req.body.email) )
+        let [err, existingUser] = await catchErrors( Users.findByEmail(req.body.email) )
+
         if (existingUser) {
             // You can't register a user if the user already exists in the system.
             next(new Error(`The user with the email ${existingUser.email} already exists.`))
         } else {
         // The user doesn't exist. Create a new account for them.
         
-       // asyncronously hash the password before storing it in the database.
+            // asyncronously hash the password before storing it in the database.
             bcrypt.hash(req.body.password, 8, async (err, encryptedPw) => {
                 if (err) {
                     next (new Error('there was an issue with hashing the password'))
@@ -29,6 +30,7 @@ class AuthController {
                             hashed_password: encryptedPw,
                         })
                         
+                        // Respond with the user's info. Leave out the password in the response.
                         res.status(200).json({
                             ...without('hashed_password', newUser),
                             token: generateToken(newUser)

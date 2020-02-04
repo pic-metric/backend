@@ -9,7 +9,7 @@ module.exports = {
     // Number -> Promise Object
     findById(id) {
         return db('users')
-            .where({ user_id: id })
+            .where({ id })
             .first()
     },
 
@@ -26,7 +26,7 @@ module.exports = {
 
     // Number -> Object -> Promise Object
     async updateById(id, changes) {
-        await db('users').update(changes).where({ user_id: id })
+        await db('users').update(changes).where({ id })
         return this.findById(id)
     },
 
@@ -38,7 +38,7 @@ module.exports = {
 
     // Number -> Promise Object
     async removeById(id) {
-        return db('users').delete().where({ user_id: id })
+        return db('users').delete().where({ id })
     },
 
     // String -> Promise Object
