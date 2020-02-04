@@ -12,7 +12,8 @@ exports.up = function(knex) {
             .onUpdate('CASCADE')
             .onDelete('CASCADE')
 
-        tbl.text('attribute')
+        tbl.text('attribute').notNullable()
+        tbl.integer('count').defaultTo(1)
     })
 };
 
