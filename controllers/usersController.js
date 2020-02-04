@@ -42,6 +42,11 @@ class UsersController {
             res.status(200).json(without('hashed_password', updatedUser))
         }
     }
+
+    static async delete(req, res, next) {
+        let [err, success] = await catchErrors( Users.removeById(req.params.user_id) )
+        err ? next(err) : res.status(200).send(`Success`)
+    }
 }
 
 
