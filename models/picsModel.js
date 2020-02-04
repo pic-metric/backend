@@ -13,13 +13,17 @@ module.exports = {
 
     // Most important endpoint in the entire app.
     // Number -> String -> Promise Object
-    processAndCreate(userId, url) {
+    async processAndCreate(userId, url) {
         /*
         Store the url in the db.
         Then query the DS ednpoint to process the image.
         Once the image is processed, write to the attributes
         table all the attributes for the image. (Attributes.create())
          */
+        await db('pics').insert({
+            user_id: userId,
+            url: url
+        })
          
     },
 
