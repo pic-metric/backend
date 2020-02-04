@@ -4,20 +4,24 @@
 
 **Base url: https://bw-pic-metric.herokuapp.com/api**
 
+All endpoints except for auth endpoints require a valid token. Tokens are 
+genereated after you register or login a user.  You must include the token 
+in the header of each request under the "Authorization" key.
+
 ### Users
 
 *GET* - /users 
 
 *Retrieve all users in the system*
 
-*PUT* - /users/:user_id
+*PUT* - /users/:user_id*
 
 *Update a user's infromation*
 
 	exampleRequestBody {
 		email: String
 		password: String
-		full_name: String (nullable)
+		full_name: String
 	}
 
 *DELETE* - /users/:user_id
