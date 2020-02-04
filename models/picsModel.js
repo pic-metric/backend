@@ -12,8 +12,8 @@ module.exports = {
     },
 
     // Most important endpoint in the entire app.
-    // String -> Promise Object
-    processAndCreate(url) {
+    // Number -> String -> Promise Object
+    processAndCreate(userId, url) {
         /*
         Store the url in the db.
         Then query the DS ednpoint to process the image.
