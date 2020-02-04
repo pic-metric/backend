@@ -120,19 +120,14 @@ in the header of each request under the "Authorization" key.
 
 ### Priority endpoints
 
-Auth endpoints
+*DELETE* - /users/:user_id
 
 <hr>
 
 ### Available Endpoints
 
-NONE
+Auth endpoints
+*PUT* - /users/:user_id*
 
 <hr>
 
-## Note to self
-**environment variables to set in production:**
-- DATABASE_URL (knexfile.js)
-- JWT_SECRET (config/secrets.js)
-- PORT (index.js)
-- NODE_ENV (database/dbClient.js)
