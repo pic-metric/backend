@@ -1,6 +1,6 @@
 
 exports.up = function(knex) {
-    return knex.schema.alterTable('atttributes', tbl => {
+    return knex.schema.alterTable('attributes', tbl => {
         tbl.integer('count').defaultTo(1)
     })
 };
