@@ -2,13 +2,13 @@ const db = require('../database/dbClient')
 
 module.exports = {
     // Promise (Array Obj)
-    all() {
+    getAll() {
         return db('pics')
     },
 
     // String -> Promise (Array Obj)
-    allForUser(userId) {
-        return db('pics').where({id: userId})
+    getAllForUser(userId) {
+        return db('pics').where({id: userId}).orderBy("id", "asc")
     },
 
     // Most important endpoint in the entire app.
