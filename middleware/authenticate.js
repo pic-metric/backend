@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken')
 const { JWT_SECRET } = require('../config/secrets')
 
-module.exports = function requireValidToken(req, res, next) {
+// This middleware will check for a valid token in the request's authorization headers. 
+function authenticate(req, res, next) {
     const token  = req.headers.authorization
 
     if (token) {
@@ -21,3 +22,5 @@ module.exports = function requireValidToken(req, res, next) {
         next(error)
     }
 }
+
+module.exports = authenticate
