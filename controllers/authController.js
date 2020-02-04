@@ -50,19 +50,23 @@ class AuthController {
         if (err) {
             next(err)
         } else {
-            bcrypt.compare(req.body.password, user.hashed_password, (err, passwordsMatch) => {
-                if (err) {
-                    next (err)
-                }
-                else if (!passwordsMatch) {
-                    next(new Error('Invalid password'))
-                } else {
-                    res.status(200).json({
-                        ...without('hashed_password', user),
-                        token: generateToken(user)
-                    })
-                }
-            })
+            if (user) {
+                bcrypt.compare(req.body.password, user.hashed_password, (err, passwordsMatch) => {
+                    if (err) {
+                        next (err)
+                    }
+                    else if (!passwordsMatch) {
+                        next(new Error('Invalid password'))
+                    } else {
+                        res.status(200).json({
+                            ...without('hashed_password', user),
+                            token: generateToken(user)
+                        })
+                    }
+                })
+            } else {
+                res.status(404).send("Invalid email address")
+            }
         }
 
     }
