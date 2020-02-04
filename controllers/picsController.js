@@ -15,7 +15,7 @@ class PicsController {
     }
 
     static async getAllForUser(req, res, next) {
-        let [err, pics] = Pics.allForUser(req.params.user_id)
+        let [err, pics] = await catchErrors( Pics.allForUser(req.params.user_id) )
 
         if (err) {
             next(new Error("There was an issue retrieving pictures for this user."))
@@ -34,6 +34,10 @@ class PicsController {
         Once the image is processed, write to the attributes
         table all the attributes for the image. (Attributes.create())
          */
+    }
+
+    static async deletePic(req, res, next) {
+
     }
 }
 
