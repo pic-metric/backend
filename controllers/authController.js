@@ -12,7 +12,7 @@ class AuthController {
         const [err, existingUser] = await catchErrors( Users.findByEmail(req.body.email) )
         if (existingUser) {
             // You can't register a user if the user already exists in the system.
-            next(new Error(`The user with the email ${existingUser.email} already exists. Please login.`))
+            next(new Error(`The user with the email ${existingUser.email} already exists.`))
         } else {
         // The user doesn't exist. Create a new account for them.
         
