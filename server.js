@@ -46,8 +46,19 @@ server.use(function notFound(req, res, next) {
     next(error)
 })
 
-// Catch-all route
-server.use(function errorHandler(error, req, res, next) {
+// Catch errors that are still wrapped in a promise
+server.use(function catchUnhandledPromiseRejections(error, req, res, next) {
+    if (error instanceof Promise) {
+        error.catch(err => {
+            next(error)
+        })
+    } else {
+        next(error)
+    }
+})
+
+// Catch-all route 
+server.use(function defaultErrorHandler(error, req, res, next) {
     error.status = error.status || 500
     error.message = error.message || 'Internal server error'
 
