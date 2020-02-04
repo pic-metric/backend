@@ -22,7 +22,7 @@ router.get('/', UsersContoller.allUsers)
 
 // PUT /api/users/:user_id
 // Update a user's information.
-router.put('/:user_id', UsersContoller.updateById)
+router.put('/:user_id', UsersContoller.update)
 
 // DELETE /api/users/:user_id
 // Delete a user from the system.

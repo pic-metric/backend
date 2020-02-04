@@ -23,7 +23,7 @@ class UsersController {
         }
     } 
 
-    static async updateById(req, res, next) {
+    static async update(req, res, next) {
         let id = req.params.user_id
         let changes = req.body
 
