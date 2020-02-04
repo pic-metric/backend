@@ -8,7 +8,7 @@ module.exports = {
 
     // String -> Promise (Array Obj)
     getAllForUser(userId) {
-        return db('pics').where({id: userId}).orderBy("id", "asc")
+        return db('pics').where({user_id: userId}).orderBy("id", "asc")
     },
 
     // Most important endpoint in the entire app.
