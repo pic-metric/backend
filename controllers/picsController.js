@@ -1,9 +1,11 @@
 const Pics = require('../models/picsModel')
+const Attributes = require('../models/attributesModel')
+const axios = require('axios')
 const { catchErrors } = require('../helpers')
 
 class PicsController {
     static async getAllPics(req, res, next) {
-        let [err, allPics] = await catchErrors( Pics.all() )
+        let [err, allPics] = await catchErrors(Pics.all())
 
         if (err) {
             next(new Error("There was an issue retrieving the pictures from the system."))
@@ -14,8 +16,18 @@ class PicsController {
         }
     }
 
+    static async getPicById(req, res, next) {
+        let [err, pic] = await catchErrors(Pics.getPicById(req.params.pic_id))
+
+        if (err) { 
+            next(err)
+        } else {
+            res.status(200).json(pic)
+        }
+    }
+
     static async getAllPicsForUser(req, res, next) {
-        let [err, pics] = await catchErrors( Pics.allForUser(req.params.user_id) )
+        let [err, pics] = await catchErrors(Pics.allForUser(req.params.user_id))
 
         if (err) {
             next(new Error("There was an issue retrieving pictures for this user."))
@@ -26,14 +38,25 @@ class PicsController {
         }
     }
 
-    // Most important endpoint in the entire app.
+    // Grab the image from the frontend and store it in the db.
     static async processAndCreate(req, res, next) {
-         /*
-        Store the url in the db.
-        Then query the DS ednpoint to process the image.
-        Once the image is processed, write to the attributes
-        table all the attributes for the image. (Attributes.create())
+        // Store the url in the db.
+        Pics.create(req.params.user_id, req.file)
+            .then(ids => {
+                res.status(200).send("Successfully saved photo. Processing image now...")
+                // call the flask api
+                processImage(ids[0])
+            })
+        
+        // call the flask api
+        function processImage(img) {
+             /*
+                Query the DS ednpoint to process the image.
+                Once the image is processed, the DS team will
+                write directly to the Attributes table
          */
+            axios.get(`flaskendpoint/${img.id}`)
+        }
     }
 
     static async deletePic(req, res, next) {
