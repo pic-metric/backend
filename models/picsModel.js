@@ -23,6 +23,6 @@ module.exports = {
 
     // Number -> Number
     delete(picId) {
-        return db('users').delete().where({id: picId})
+        return db('pics').delete().where({id: picId})
     }
 }
