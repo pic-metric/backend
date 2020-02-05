@@ -12,20 +12,19 @@ module.exports = {
     },
 
     // Object -> Promise Object
-    async create(userId, pic) {
-        await db('pics').insert({
-            user_id: userId,
-            pic: pic
-        })
-        
-        return 'success'
+    create(userId, picInfo) {
+        return db("pics")
+            .insert({
+                user_id: userId,
+                ...picInfo
+            })
+            .first()
     },
 
     // Store the processed image 
-    async update(userId, changes) {
-        await db('pics').update(changes).where({user_id: userId})
-
-        return 'success'
+    // Number -> Object -> Promise Object
+    updateById(picId, changes) {
+        return db('pics').update(changes).where({id: picId})
     },
 
     // Number -> Number
