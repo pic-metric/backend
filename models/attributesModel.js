@@ -15,7 +15,6 @@ module.exports = {
                 id: picId,
                 ...picInfo
             })
-            .first()
     },
 
     // Store the processed image 
