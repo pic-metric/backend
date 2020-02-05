@@ -79,7 +79,7 @@ in the header of each request under the "Authorization" key.
 
 *Retrieve all pictures stored by a particular user*
 
-*POST* - /pics
+*POST* - /pics/:user_id
 
 *Upload a picture*
 
