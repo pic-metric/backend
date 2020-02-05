@@ -12,7 +12,8 @@ exports.up = function(knex) {
             .onUpdate('CASCADE')
             .onDelete('CASCADE')
         
-        tbl.text('url').notNullable()
+        tbl.text('pic').notNullable()
+        tbl.text('processed_pic')
     })
 };
 

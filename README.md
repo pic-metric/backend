@@ -81,12 +81,7 @@ in the header of each request under the "Authorization" key.
 
 *POST* - /pics/:user_id
 
-*Upload a picture*
-
-	exampleRequestBody: {
-		user_id: Number
-		url: String
-	}
+*Upload a picture via file upload (multipart/form-data). This endpoint should be used by the frontend.*
 
 *DELETE* - /pics/:pic_id
 

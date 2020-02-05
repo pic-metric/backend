@@ -8,17 +8,23 @@ module.exports = {
 
     // String -> Promise (Array Obj)
     allForUser(userId) {
-        return db('pics').where({user_id: userId}).orderBy("id", "asc")
+        return db('pics').where({user_id: userId}).orderBy('id', 'asc')
     },
 
-    // Number -> String -> Promise Object
-    async create(userId, url) {
-       
-        await db('pics').insert({
-            user_id: userId,
-            url: url
-        })
-         
+    // Object -> Promise Object
+    create(userId, picInfo) {
+        return db("pics")
+            .insert({
+                user_id: userId,
+                ...picInfo
+            })
+            .first()
+    },
+
+    // Store the processed image 
+    // Number -> Object -> Promise Object
+    updateById(picId, changes) {
+        return db('pics').update(changes).where({id: picId})
     },
 
     // Number -> Number
