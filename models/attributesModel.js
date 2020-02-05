@@ -4,22 +4,23 @@ module.exports = {
     // Number -> Promise (Array Object)
     getAllForPic(picId) {
         return db('attributes')
-            .where({pic_id: picId})
+            .where({id: picId})
             .orderBy("id", "asc")
     },
 
-    // Number -> String -> Number -> Promise String
-    async create(picId, attribute, count) {
-        /*  picId comes from the request parameters, attriubte
-            attribute and count comes from the the flask API 
-            (thru the processAndCreate method on the pics model)
-        */  
-        await db("attributes").insert({
-            pic_id: picId,
-            attribute: attribute,
-            count: count
-        })
+     // Object -> Promise Object
+     create(picId, picInfo) {
+        return db("attributes")
+            .insert({
+                id: picId,
+                ...picInfo
+            })
+            .first()
+    },
 
-        return "success"
-    }
+    // Store the processed image 
+    // Number -> Object -> Promise Object
+    updateById(picId, changes) {
+        return db('pics').update(changes).where({id: picId})
+    },
 }
