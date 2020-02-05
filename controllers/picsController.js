@@ -37,12 +37,18 @@ class PicsController {
     }
 
     static async deletePic(req, res, next) {
-        let [err, _] = await catchErrors(Pics.delete(req.params.pic_id))
-
+        let [err, deletedPic] = await catchErrors(Pics.delete(req.params.pic_id))
+        let errMsg = "There was an issue when attempting to delete the picture"
+        
         if (err) {
-            next(new Error("There was an issue when attempting to delete the picture"))
+            next(new Error(errMsg))
         } else {
-            res.status(200).send("Success")
+            // deletedPic should return a 0 if it failed, or a 1 if it succeeeded
+            if (deletedPic) {
+                res.status(200).send("Success")
+            } else {
+                next(new Error(errMsg))
+            }
         }
     }
 }
