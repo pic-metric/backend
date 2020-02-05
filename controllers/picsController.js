@@ -10,7 +10,7 @@ class PicsController {
         if (err) {
             next(new Error("There was an issue retrieving the pictures from the system."))
         } else if (!allPics.length) {
-            next(new Error("There are no pictures stored in the system at this time."))
+           res.status(200).json([])
         } else {
             res.status(200).json(allPics)
         }
