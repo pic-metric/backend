@@ -99,14 +99,6 @@ in the header of each request under the "Authorization" key.
 		attributes: ['dog', 'tree', 'pee']
 	}
 
-*POST* - /attributes/:pic_id
-
-*Store an attribute for a particular picture. Frontend shouldn't use this one.*
-
-	exampleRequestBody: {
-		attributes: Array String	
-	}
-
 *DELETE* - /attributes/:pic_id/:attribute_name
 
 *Delete an attribute for a particular picture*
@@ -126,6 +118,8 @@ Auth endpoints
 Users endpoints
 
 All Pics endpoints except for POST
+
+*GET* - /attributes/:pic_id
 
 <hr>
 
