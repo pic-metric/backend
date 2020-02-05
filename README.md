@@ -83,10 +83,6 @@ in the header of each request under the "Authorization" key.
 
 *Upload a picture via file upload (multipart/form-data). This endpoint should be used by the frontend.*
 
-*PUT* - /pics/:pic_id
-
-*For data science to upload the processed image. I will send the pic_id (primary key) to the flask endpoint.*
-
 *DELETE* - /pics/:pic_id
 
 *Delete a picture*
