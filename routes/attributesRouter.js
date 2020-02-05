@@ -3,9 +3,11 @@
  */
 
 const router = require('express').Router({mergeParams: true})
-const authenticate = require('../middleware/authenticate')
 const { responseForUnfinishedEndpoint } = require('../helpers')
+const requireAuthentication = require('../middleware/authenticate')
 
+// Require a valid json web token on all routes
+// router.all(requireAuthentication)
 
 /**
  * Routes (Main)

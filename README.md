@@ -79,7 +79,7 @@ in the header of each request under the "Authorization" key.
 
 *Retrieve all pictures stored by a particular user*
 
-*POST* - /pics
+*POST* - /pics/:user_id
 
 *Upload a picture*
 
@@ -120,7 +120,7 @@ in the header of each request under the "Authorization" key.
 
 ### Priority endpoints
 
-*DELETE* - /users/:user_id
+*POST* - /pics/:user_id
 
 <hr>
 
@@ -129,6 +129,8 @@ in the header of each request under the "Authorization" key.
 Auth endpoints
 
 Users endpoints
+
+All Pics endpoints except for POST
 
 <hr>
 
