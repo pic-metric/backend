@@ -6,9 +6,18 @@ module.exports = {
         return db('pics')
     },
 
+    // Number -> Promise Object
+    getPicById(picId) {
+        return db('pics')
+            .where({id: picId})
+            .first()
+    }, 
+
     // String -> Promise (Array Obj)
     allForUser(userId) {
-        return db('pics').where({user_id: userId}).orderBy('id', 'asc')
+        return db('pics')
+            .where({user_id: userId})
+            .orderBy('id', 'asc')
     },
 
     // Object -> Promise Object

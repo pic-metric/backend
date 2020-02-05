@@ -79,7 +79,7 @@ in the header of each request under the "Authorization" key.
 
 *Retrieve all pictures stored by a particular user*
 
-*POST* - /pics/:user_id
+*POST* - /pics/for/:user_id
 
 *Upload a picture via file upload (multipart/form-data). This endpoint should be used by the frontend.*
 
