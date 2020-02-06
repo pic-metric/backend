@@ -41,6 +41,9 @@ class PicsController {
 
     // Grab the image from the frontend and store it in the db.
     static async processAndCreate(req, res, next) {
+        console.log("==========REQ.FILE===========", req.file, '\n\n')
+        console.log("==========REQ.BODY===========",req.body)
+        
         let byteData = fs.readFileSync(req.file.path)
         
         // Store the url in the db.
