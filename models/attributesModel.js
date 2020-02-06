@@ -4,7 +4,7 @@ module.exports = {
     // Number -> Promise (Array Object)
     getAllForPic(picId) {
         return db('attributes')
-            .where({id: picId})
+            .where({pic_id: picId})
             .orderBy("id", "asc")
     },
 
