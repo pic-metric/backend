@@ -14,6 +14,10 @@ in the header of each request under the "Authorization" key.
 
 *Retrieve all users in the system*
 
+*GET* - /users/:user_id
+
+*Retrieve a single user from the system.*
+
 *PUT* - /users/:user_id*
 
 *Update a user's infromation*
