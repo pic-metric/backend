@@ -22,4 +22,8 @@ module.exports = {
     updateById(picId, changes) {
         return db('pics').update(changes).where({id: picId})
     },
+
+    delete(picId) {
+        return db('pics').delete().where({id: picId})
+    }
 }
