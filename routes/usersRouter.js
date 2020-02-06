@@ -18,6 +18,10 @@ router.all('*', requireAuthentication)
 // Retrieve all users in the system.
 router.get('/', UsersContoller.allUsers)
 
+// GET /api/users/:user_id
+// Retrieve a single user from the system.
+router.get('/:user_id', UsersContoller.findById)
+
 
 // PUT /api/users/:user_id
 // Update a user's information.

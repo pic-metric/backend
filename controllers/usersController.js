@@ -23,6 +23,20 @@ class UsersController {
         }
     } 
 
+    static async findById(req, res, next) {
+        let [err, user] = await catchErrors(Users.findById(req.params.user_id))
+
+        if (err) {
+            let error = new Error('Could not find the user with the specified id')
+            error.status = 404
+
+            next(error)
+        } else {
+            // keep out the password 
+            res.status(200).json(without('hashed_password', user))
+        }
+    }
+
     static async update(req, res, next) {
         let id = req.params.user_id
         let changes = req.body
