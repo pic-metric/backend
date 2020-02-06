@@ -47,7 +47,11 @@ class PicsController {
         } else if (!pics.length) {
             next(new Error("There are no pictures stored for this user yet."))
         } else {
-            res.status(200).json(pics)
+            // Return the just pic id and whether it's processed
+            res.status(200).json(pics.map( pic => ({ 
+                id: pic.id, 
+                processed: Boolean(pic.processed_pic) 
+            })))
         }
     }
 
