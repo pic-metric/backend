@@ -35,7 +35,8 @@ router.get('/for/:user_id', PicsController.getAllPicsForUser)
 
 // POST https://bw-pic-metric.herokuapp.com/api/:user_id
 // Upload a picture.
-router.post('/:user_id', upload.single('pic'),  PicsController.processAndCreate)
+// router.post('/:user_id', upload.single('pic'),  PicsController.processAndCreate)
+router.post('/:user_id', upload.none(),  PicsController.processAndCreate)
 
 // DELETE https://bw-pic-metric.herokuapp.com/api/pics/:pic_id
 // Remove a picture from the system.
