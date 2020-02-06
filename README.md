@@ -100,10 +100,6 @@ in the header of each request under the "Authorization" key.
 
 *Get attributes for a particular picture*
 
-	exampleResponseBody: {
-		attributes: ['dog', 'tree', 'pee']
-	}
-
 *DELETE* - /attributes/:pic_id/:attribute_name
 
 *Delete an attribute for a particular picture*
