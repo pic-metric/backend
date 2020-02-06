@@ -41,10 +41,6 @@ class PicsController {
 
     // Grab the image from the frontend and store it in the db.
     static async processAndCreate(req, res, next) {
-
-        console.log('========REQ.FILE=======', req.file, '\n\n')
-        console.log('========REQ.BODY==========', req.body)
-        
         let byteData = fs.readFileSync(req.file.path)
         
         // Store the url in the db.
@@ -52,17 +48,17 @@ class PicsController {
             .then(ids => {
                 res.status(200).send("Successfully saved photo. Processing image now...")
                 // call the flask api
-                processImage(ids[0])
+                processImage(ids[0]).then(console.log).catch(console.error)
             })
         
         // call the flask api
-        function processImage(img) {
+        function processImage(picId) {
              /*
                 Query the DS ednpoint to process the image.
                 Once the image is processed, the DS team will
                 write directly to the Attributes table
          */
-            axios.get(`flaskendpoint/${img.id}`)
+            axios.get(`http://flaskapp-env.pm5a3zpgym.us-west-1.elasticbeanstalk.com/image_summary/${picId}`)
         }
     }
 
