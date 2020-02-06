@@ -75,11 +75,16 @@ in the header of each request under the "Authorization" key.
 
 *Retrieve all pictures in the system*
 
-*GET* - /pics/:user_id
+*GET* - /pics/:pic_id
+
+*Retrieve a particular picture by its id.
+
+
+*GET* - /pics/for/:user_id
 
 *Retrieve all pictures stored by a particular user*
 
-*POST* - /pics/for/:user_id
+*POST* - /pics/:user_id
 
 *Upload a picture via file upload (multipart/form-data). This endpoint should be used by the frontend.*
 

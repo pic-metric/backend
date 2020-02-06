@@ -33,9 +33,8 @@ router.get('/:pic_id', PicsController.getPicById)
 router.get('/for/:user_id', PicsController.getAllPicsForUser)
 
 
-// POST https://bw-pic-metric.herokuapp.com/api/pics
+// POST https://bw-pic-metric.herokuapp.com/api/:user_id
 // Upload a picture.
-// router.post('/:user_id', multer(), PicsController.uploadImage)
 router.post('/:user_id', upload.single('pic'),  PicsController.processAndCreate)
 
 // DELETE https://bw-pic-metric.herokuapp.com/api/pics/:pic_id
