@@ -3,12 +3,11 @@
  */
 
 const router = require('express').Router({mergeParams: true})
-const { responseForUnfinishedEndpoint } = require('../helpers')
 const requireAuthentication = require('../middleware/authenticate')
 const AttributesController = require('../controllers/attributesController')
 
 // Require a valid json web token on all routes
-// router.all(requireAuthentication)
+router.all(requireAuthentication)
 
 /**
  * Routes (Main)
@@ -18,7 +17,13 @@ const AttributesController = require('../controllers/attributesController')
 // Get attributes for a particular picture.
 router.get('/:pic_id', AttributesController.getAllForPic)
 
+// DELETE  https://bw-pic-metric.herokuapp.com/api/attriubtes/:pic_id 
+// Remove an attribute from a picture
 router.delete('/:pic_id', AttributesController.deleteAttributesForPic)
 
+
+/**
+ * Export
+ */
 
 module.exports = router

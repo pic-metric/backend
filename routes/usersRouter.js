@@ -3,7 +3,6 @@
  */
 
 const router = require('express').Router({mergeParams: true})
-const { responseForUnfinishedEndpoint } = require('../helpers')
 const UsersContoller = require('../controllers/usersController')
 const requireAuthentication = require('../middleware/authenticate')
 
@@ -27,6 +26,11 @@ router.put('/:user_id', UsersContoller.update)
 // DELETE /api/users/:user_id
 // Delete a user from the system.
 router.delete('/:user_id', UsersContoller.delete)
+
+
+/**
+ * Export
+ */
 
 module.exports = router
 

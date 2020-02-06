@@ -3,15 +3,23 @@
  */
 
 const router = require('express').Router({mergeParams: true})
-const { responseForUnfinishedEndpoint } = require('../helpers')
 const requireAuthentication = require('../middleware/authenticate')
 const PicsController = require('../controllers/picsController')
 const multer = require('multer')
 
+/**
+ * Constants
+ */
+
 const upload = multer({dest: 'tmp'})
 
+
+/**
+ * Main
+ */
+
 // Require a valid json web token on all routes
-// router.all(requireAuthentication)
+router.all(requireAuthentication)
 
 // GET https://bw-pic-metric.herokuapp.com/api/pics
 // Retrieve all pictures in the system.
@@ -34,4 +42,10 @@ router.post('/:user_id', upload.single('pic'),  PicsController.processAndCreate)
 // Remove a picture from the system.
 router.delete('/:pic_id', PicsController.deletePic)
 
+
+/**
+ * Export
+ */
+
 module.exports = router
+
