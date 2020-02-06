@@ -11,7 +11,7 @@ class PicsController {
         if (err) { 
             next(err)
         } else {
-            if (pic.pic.length) {
+            if (pic.pic) {
                 res.writeHead(200, {
                     'Content-Length': pic.pic.length
                 })
@@ -28,7 +28,7 @@ class PicsController {
         if (err) { 
             next(err)
         } else {
-            if (pic.processed_pic.length) {
+            if (pic.processed_pic) {
                 res.writeHead(200, {
                     'Content-Length': pic.processed_pic.length
                 })
