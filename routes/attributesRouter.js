@@ -18,5 +18,7 @@ const AttributesController = require('../controllers/attributesController')
 // Get attributes for a particular picture.
 router.get('/:pic_id', AttributesController.getAllForPic)
 
+router.delete('/:pic_id', AttributesController.deleteAttributesForPic)
+
 
 module.exports = router
