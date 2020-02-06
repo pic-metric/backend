@@ -21,13 +21,13 @@ module.exports = {
     },
 
     // Object -> Promise Object
-    create(userId, picInfo) {
+    create(userId, pic) {
         return db("pics")
             .insert({
                 user_id: userId,
-                ...picInfo
+                pic: pic
             })
-            .first()
+            .returning("id")
     },
 
     // Store the processed image 
