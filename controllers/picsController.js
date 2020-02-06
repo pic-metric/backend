@@ -45,7 +45,7 @@ class PicsController {
         if (err) {
             next(new Error("There was an issue retrieving pictures for this user."))
         } else if (!pics.length) {
-            next(new Error("There are no pictures stored for this user yet."))
+            res.status(200).json([])
         } else {
             // Return the just pic id and whether it's processed
             res.status(200).json(pics.map( pic => ({ 
