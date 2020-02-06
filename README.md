@@ -113,13 +113,7 @@ in the header of each request under the "Authorization" key.
 
 ### Available Endpoints
 
-Auth endpoints
-
-Users endpoints
-
-All Pics endpoints except for POST
-
-*GET* - /attributes/:pic_id
+Everything
 
 <hr>
 
