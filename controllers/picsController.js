@@ -58,7 +58,7 @@ class PicsController {
                 Once the image is processed, the DS team will
                 write directly to the Attributes table
          */
-            axios.get(`http://flaskapp-env.pm5a3zpgym.us-west-1.elasticbeanstalk.com/image_summary/${picId}`)
+            return axios.get(`http://flaskapp-env.pm5a3zpgym.us-west-1.elasticbeanstalk.com/image_summary/${picId}`)
         }
     }
 
