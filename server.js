@@ -21,7 +21,10 @@ const server = express()
  */
 server.use(express.json())
 server.use(helmet())
-server.use(cors({ allowedHeaders: "*" }))
+server.use(cors({ 
+    allowedHeaders: "*",
+    origin: true
+ }))
 
 
 /**
