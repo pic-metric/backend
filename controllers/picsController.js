@@ -74,7 +74,7 @@ class PicsController {
         // Query the DS ednpoint to process the image. 
         // Once the image is processed, the DS team will write directly to the Attributes table
         function processImage(picId) {
-            return axios.get(`http://flaskapp-env.pm5a3zpgym.us-west-1.elasticbeanstalk.com/image_summary/${picId}`)
+            return axios.get(`http://flask-app-5.5fq8ergm84.us-west-1.elasticbeanstalk.com/image_summary/${picId}`)
         }
     }
 
