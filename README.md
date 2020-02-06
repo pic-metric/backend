@@ -85,7 +85,7 @@ in the header of each request under the "Authorization" key.
 
 *GET* - /pics/for/:user_id
 
-*Retrieve all pictures stored by a particular user*
+*Retrieve all pictures stored by a particular user. Returns the id of the picture and whether it's processed.*
 
 *POST* - /pics/:user_id
 
