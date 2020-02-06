@@ -75,14 +75,13 @@ in the header of each request under the "Authorization" key.
 
 ### Pics
 
-*GET* - /pics
+*GET* - /pics/processed/:pic_id
 
-*Retrieve all pictures in the system*
+*Retrieve a particular unprocessed picture by its id.
 
-*GET* - /pics/:pic_id
+*GET* - /pics/unprocessed/:pic_id
 
-*Retrieve a particular picture by its id.
-
+*Retrieve a particular processed picture by its id.
 
 *GET* - /pics/for/:user_id
 
@@ -122,3 +121,8 @@ Everything
 
 <hr>
 
+### Bugs
+
+Split the GET pics endpoint into two separate endpoints: one for unprocessed pics and the other for processed pics.
+
+ 

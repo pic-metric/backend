@@ -21,12 +21,12 @@ const upload = multer({dest: 'tmp'})
 // Require a valid json web token on all routes
 router.all(requireAuthentication)
 
-// GET https://bw-pic-metric.herokuapp.com/api/pics
-// Retrieve all pictures in the system.
-router.get('/', PicsController.getAllPics)
 
-// GET https://bw-pic-metric.herokuapp.com/api/pics/:pic_id
-router.get('/:pic_id', PicsController.getPicById)
+// GET https://bw-pic-metric.herokuapp.com/api/pics/unprocessed/:pic_id
+router.get('/unprocessed/:pic_id', PicsController.getUnprocessedPicById)
+
+// GET https://bw-pic-metric.herokuapp.com/api/pics/processed/:pic_id
+router.get('/processed/:pic_id', PicsController.getProcessedPicById)
 
 // GET https://bw-pic-metric.herokuapp.com/api/pics/for/:user_id
 // Retrieve all pictures for a particular user.

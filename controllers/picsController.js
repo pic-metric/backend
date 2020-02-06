@@ -5,25 +5,37 @@ const { catchErrors } = require('../helpers')
 const fs = require('fs')
 
 class PicsController {
-    static async getAllPics(req, res, next) {
-        let [err, allPics] = await catchErrors(Pics.all())
-
-        if (err) {
-            next(new Error("There was an issue retrieving the pictures from the system."))
-        } else if (!allPics.length) {
-           res.status(200).json([])
-        } else {
-            res.status(200).json(allPics)
-        }
-    }
-
-    static async getPicById(req, res, next) {
+    static async getUnprocessedPicById(req, res, next) {
         let [err, pic] = await catchErrors(Pics.getPicById(req.params.pic_id))
 
         if (err) { 
             next(err)
         } else {
-            res.status(200).json(pic)
+            if (pic.pic.length) {
+                res.writeHead(200, {
+                    'Content-Length': pic.pic.length
+                })
+                res.end(pic.pic); 
+            } else {
+                res.status(404).send("Not found.")
+            }
+        }
+    }
+
+    static async getProcessedPicById(req, res, next) {
+        let [err, pic] = await catchErrors(Pics.getPicById(req.params.pic_id))
+
+        if (err) { 
+            next(err)
+        } else {
+            if (pic.processed_pic.length) {
+                res.writeHead(200, {
+                    'Content-Length': pic.processed_pic.length
+                })
+                res.end(pic.processed_pic); 
+            } else {
+                res.status(404).send("Not found.")
+            }
         }
     }
 
