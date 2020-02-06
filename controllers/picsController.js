@@ -48,16 +48,16 @@ class PicsController {
             .then(ids => {
                 res.status(200).send("Successfully saved photo. Processing image now...")
                 // call the flask api
-                processImage(ids[0]).then(console.log).catch(console.error)
+                processImage(ids[0])
+                    .then(res => {
+                        console.log("successfully processed the image.")
+                    })
+                    .catch(console.error)
             })
         
-        // call the flask api
+        // Query the DS ednpoint to process the image. 
+        // Once the image is processed, the DS team will write directly to the Attributes table
         function processImage(picId) {
-             /*
-                Query the DS ednpoint to process the image.
-                Once the image is processed, the DS team will
-                write directly to the Attributes table
-         */
             return axios.get(`http://flaskapp-env.pm5a3zpgym.us-west-1.elasticbeanstalk.com/image_summary/${picId}`)
         }
     }
