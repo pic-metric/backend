@@ -64,6 +64,7 @@ class PicsController {
             .then(ids => {
                 res.status(200).send("Successfully saved photo. Processing image now...")
                 // call the flask api
+                console.log('=============== ID TO SEND TO DS============', ids[0])
                 processImage(ids[0])
                     .then(res => {
                         console.log("successfully processed the image.")
