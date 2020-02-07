@@ -58,14 +58,12 @@ class PicsController {
     // Grab the image from the frontend and store it in the db.
     static async processAndCreate(req, res, next) {
         let byteData = fs.readFileSync(req.file.path)
-        console.log("======what's being stored in the db=========", byteData)
         
         // Store the url in the db.
         Pics.create(req.params.user_id, byteData)
             .then(ids => {
                 res.status(200).send("Successfully saved photo. Processing image now...")
                 // call the flask api
-                console.log('=============== ID TO SEND TO DS============', ids[0])
                 processImage(ids[0])
                     .then(res => {
                         console.log("successfully processed the image.")
