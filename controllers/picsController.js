@@ -48,10 +48,7 @@ class PicsController {
             res.status(200).json([])
         } else {
             // Return the just pic id and whether it's processed
-            res.status(200).json(pics.map( pic => ({ 
-                id: pic.id, 
-                processed: Boolean(pic.processed_pic) 
-            })))
+            res.status(200).json(formatPics(pics))
         }
     }
 
@@ -61,10 +58,13 @@ class PicsController {
         
         // Store the url in the db.
         Pics.create(req.params.user_id, byteData)
-            .then(ids => {
-                res.status(200).send("Successfully saved photo. Processing image now...")
+            .then(async ([picId]) => {
+                // res.status(200).send("Successfully saved photo. Processing image now...")
+                let [err, pics] = await catchErrors(Pics.allForUser(req.params.user_id))
+                res.status(200).json(formatPics(pics))
+                
                 // call the flask api
-                processImage(ids[0])
+                processImage(picId)
                     .then(res => {
                         console.log("successfully processed the image.")
                     })
@@ -93,6 +93,13 @@ class PicsController {
             }
         }
     }
+}
+
+function formatPics(pics) {
+    return pics.map( pic => ({ 
+        id: pic.id, 
+        processed: Boolean(pic.processed_pic) 
+    }))
 }
 
 module.exports = PicsController
